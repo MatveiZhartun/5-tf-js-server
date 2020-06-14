@@ -7,7 +7,7 @@ const tf = require('@tensorflow/tfjs-node');
 const wait = () => setTimeout(wait, 1000);
 wait();
 
-SLICE_INDEX = 100
+SLICE_INDEX = 1000000
 
 function roll(v) {
   return _.indexOf(v, _.max(v));
@@ -45,7 +45,7 @@ model.compile({optimizer: 'adam', loss: 'categoricalCrossentropy', metrics: ['ac
 const onBatchEnd = (__, logs) => console.log('[Batch]', logs);
 const onEpochEnd = (__, logs) => console.log('[Epoch]', logs);
 
-model.fit(xTrainData, yTrainData, { epochs: 1, batchSize: 100, validationSplit: 0.2, callbacks: {onBatchEnd, onEpochEnd} })
+model.fit(xTrainData, yTrainData, { epochs: 50, batchSize: 100, validationSplit: 0.2, verbose: 0, callbacks: {onBatchEnd, onEpochEnd} })
   .then(() => {
     let yResult = model.predict(xValidationData).arraySync();
     let CM2 = ConfusionMatrix.fromLabels(yValidationData, _.map(yResult, (row) => roll(row)));
