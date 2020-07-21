@@ -5,7 +5,7 @@
   "dependencies": {
     "numjs": "^0.16.0",
     "comma-separated-values": "^3.6.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "train-test-split": "^1.0.0",
     "@tensorflow/tfjs-node": "^2.0.0",
     "ml-confusion-matrix": "^0.4.0",
